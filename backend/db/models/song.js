@@ -18,13 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
-
-    userPageId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
-
   }, {});
   Song.associate = function(models) {
     Song.belongsTo(models.User, { foreignKey: 'userId'});

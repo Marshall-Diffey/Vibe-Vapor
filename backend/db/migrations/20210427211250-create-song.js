@@ -9,18 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(100)
       },
       content: {
+        allowNull: false,
         type: Sequelize.BLOB
       },
       coverArt: {
         type: Sequelize.BLOB
       },
       userId: {
-        type: Sequelize.INTEGER
-      },
-      userPageId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
