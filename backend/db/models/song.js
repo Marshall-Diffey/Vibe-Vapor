@@ -2,32 +2,33 @@
 module.exports = (sequelize, DataTypes) => {
   const Song = sequelize.define('Song', {
     title: {
-      DataTypes.STRING(100),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
 
     content: {
-      DataTypes.VARBINARY,
+      type: DataTypes.VARBINARY,
       allowNull: false
     },
 
     coverArt: {
-      DataTypes.VARBINARY,
+      type: DataTypes.VARBINARY,
       allowNull: false
     },
     userId: {
-      DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
 
     userPageId: {
-      DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
 
   }, {});
   Song.associate = function(models) {
-    // associations can be defined here
+    Song.belongsTo(models.User, { foreignKey: 'userId'});
+    Song.hasMany (models.Comment, { foreignKey: 'songId' });
   };
   return Song;
 };
