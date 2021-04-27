@@ -6,5 +6,4 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-
 module.exports = router;
