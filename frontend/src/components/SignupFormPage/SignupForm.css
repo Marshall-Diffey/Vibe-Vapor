@@ -1,0 +1,25 @@
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emailInput {
+    margin: 4px 8px;
+}
+
+.usernameInput {
+    margin: 4px 8px;
+}
+
+.passwordInput {
+    margin: 4px 8px;
+}
+
+.confirmPasswordInput {
+    margin: 4px 8px;
+}
+
+.signupButton {
+    margin: 4px 8px;
+}
