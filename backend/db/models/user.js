@@ -13,22 +13,28 @@ module.exports = (sequelize, DataTypes) => {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
           }
-        },
-      },
+        }
+      }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
           len: [3, 256]
-      },
+      }
+    },
+    profilePicture: {
+      type: DataTypes.BLOB
+    },
+    headerPicture: {
+      type: DataTypes.BLOB
     },
     hashedPassword: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [60, 60]
-      },
+      }
     }
   }, {
     defaultScope: {

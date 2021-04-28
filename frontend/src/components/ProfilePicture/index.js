@@ -1,0 +1,1 @@
+import './ProfilePicture.css'
