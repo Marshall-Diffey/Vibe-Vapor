@@ -7,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     content: {
-      type: DataTypes.VARBINARY,
+      type: DataTypes.BLOB,
       allowNull: false
     },
 
     coverArt: {
-      type: DataTypes.VARBINARY,
+      type: DataTypes.BLOB,
       allowNull: false
     },
     userId: {

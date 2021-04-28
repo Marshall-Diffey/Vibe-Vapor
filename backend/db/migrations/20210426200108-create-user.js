@@ -19,10 +19,10 @@ module.exports = {
         unique: true
       },
       profilePicture: {
-        type: Sequelize.VARBINARY
+        type: Sequelize.BLOB
       },
       headerPicture: {
-        type: Sequelize.VARBINARY
+        type: Sequelize.BLOB
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

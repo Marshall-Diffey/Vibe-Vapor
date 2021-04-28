@@ -44,4 +44,20 @@ router.post(
     })
 );
 
+router.get(
+  '/:id',
+
+);
+
+router.get(
+  '/profile',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const user = req.user;
+    return res.json({
+      user
+    })
+  })
+);
+
 module.exports = router;
