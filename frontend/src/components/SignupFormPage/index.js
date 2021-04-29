@@ -10,6 +10,8 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [headerPicture, setHeaderPicture] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -52,6 +54,24 @@ function SignupFormPage() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+        />
+      </label>
+      <label>
+        Profile Picture (optional)
+        <input
+          className="profilePictureInput"
+          type="file"
+          value={profilePicture}
+          onChange={(e) => setProfilePicture(e.target.files[0])}
+        />
+      </label>
+      <label>
+        Header Picture (optional)
+        <input
+          className="headerPictureInput"
+          type="file"
+          value={headerPicture}
+          onChange={(e) => setHeaderPicture(e.target.files[0])}
         />
       </label>
       <label>

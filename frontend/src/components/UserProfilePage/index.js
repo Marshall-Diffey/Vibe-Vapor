@@ -1,9 +1,13 @@
-// import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// import './UserProfile.css';
+import ProfileHeader from '../ProfileHeader';
 
-// export default function UserProfilePage () {
+import './UserProfile.css';
 
-//     return
-// }
+export default function UserProfilePage () {
+
+    return (
+        <ProfileHeader />
+    )
+}
