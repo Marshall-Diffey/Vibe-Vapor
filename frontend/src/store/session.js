@@ -43,14 +43,17 @@ export const restoreUser = () => async (dispatch) => {
 
 //thunk
 export const signup = (user) => async (dispatch) => {
-    const { username, email, password } = user;
+    const { username, email, profilePicture, headerPicture, password } = user;
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    if (profilePicture) formData.append("profilePicture", profilePicture);
+    if (headerPicture) formData.append("headerPicture", headerPicture);
+
     const response = await csrfFetch("/api/users", {
       method: "POST",
-      body: JSON.stringify({
-        username,
-        email,
-        password
-      })
+      body: formData
     });
     const data = await response.json();
     dispatch(setUser(data.user));

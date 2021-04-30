@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
 
-    content: {
-      type: DataTypes.BLOB,
+    fileUrl: {
+      type: DataTypes.STRING,
       allowNull: false
     },
 

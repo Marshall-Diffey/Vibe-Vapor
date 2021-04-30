@@ -5,6 +5,12 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const {
+  singleMulterUpload,
+  singlePublicFileUpload,
+  multipleMulterUpload,
+  multiplePublicFileUpload,
+} = require("../../awsS3");
 
 const router = express.Router();
 
@@ -31,11 +37,24 @@ const validateSignup = [
 // Sign up
 router.post(
     '',
+    // may need to invoke singleMulterUpload twice instead of passing two arguments
+    singleMulterUpload('profilePicture', 'headerPicture'),
     validateSignup,
     asyncHandler(async (req, res) => {
       const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
-
+      let headerPictureUrl;
+      let profilePictureUrl;
+      if (req.file.length) {
+        req.file.forEach(async (pic) => {
+          if (pic.slice(0, pic.length - 6) === 'header') {
+            headerPictureUrl = await singlePublicFileUpload(pic.slice(0, pic.length - 6));
+          }
+          else {
+            profilePictureUrl = await singlePublicFileUpload(pic);
+          }
+        })
+      }
+      const user = await User.signup({ email, username, password, headerPictureUrl, profilePictureUrl });
       await setTokenCookie(res, user);
 
       return res.json({

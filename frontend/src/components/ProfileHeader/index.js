@@ -6,9 +6,9 @@ import "./ProfileHeader.css"
 export default function ProfileHeader() {
     return (
         <div className='profileHeader'>
-            <img src=''></img>
+            <img src='' alt='Header'></img>
             <div className='profilePicture'>
-                <img src=''></img>
+                <img src='' alt='Profile'></img>
             </div>
             <div>Artist Name</div>
         </div>

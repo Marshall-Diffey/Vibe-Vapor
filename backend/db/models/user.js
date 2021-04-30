@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
           len: [3, 256]
       }
     },
-    profilePicture: {
-      type: DataTypes.BLOB
+    profilePictureUrl: {
+      type: DataTypes.STRING
     },
-    headerPicture: {
-      type: DataTypes.BLOB
+    headerPictureUrl: {
+      type: DataTypes.STRING
     },
     hashedPassword: {
       type: DataTypes.STRING,

@@ -10,8 +10,8 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
-  const [headerPicture, setHeaderPicture] = useState("");
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [headerPicture, setHeaderPicture] = useState(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -22,7 +22,15 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, profilePicture, headerPicture, password }))
+        .then(() => {
+          setEmail("");
+          setUsername("");
+          setProfilePicture(null);
+          setHeaderPicture(null);
+          setPassword("");
+          setConfirmPassword("");
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -61,8 +69,7 @@ function SignupFormPage() {
         <input
           className="profilePictureInput"
           type="file"
-          value={profilePicture}
-          onChange={(e) => setProfilePicture(e.target.files[0])}
+          onChange={(e) => {if (e.target.files[0]) setProfilePicture(e.target.files[0])}}
         />
       </label>
       <label>
@@ -70,8 +77,7 @@ function SignupFormPage() {
         <input
           className="headerPictureInput"
           type="file"
-          value={headerPicture}
-          onChange={(e) => setHeaderPicture(e.target.files[0])}
+          onChange={(e) => {if (e.target.files[0]) setHeaderPicture(e.target.files[0])}}
         />
       </label>
       <label>
