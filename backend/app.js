@@ -16,6 +16,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
+app.use(bodyParser({limit: '5mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

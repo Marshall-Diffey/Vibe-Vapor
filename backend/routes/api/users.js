@@ -38,10 +38,11 @@ const validateSignup = [
 router.post(
     '',
     // may need to invoke singleMulterUpload twice instead of passing two arguments
-    singleMulterUpload('profilePicture', 'headerPicture'),
+    multipleMulterUpload('images'),
     validateSignup,
     asyncHandler(async (req, res) => {
       const { email, password, username } = req.body;
+      console.log(req.file);
       let headerPictureUrl;
       let profilePictureUrl;
       if (req.file.length) {
