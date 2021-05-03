@@ -6,15 +6,13 @@ import "./ProfileHeader.css"
 export default function ProfileHeader() {
     const sessionUser = useSelector((state) => state.session.user);
     console.log(sessionUser.profilePictureUrl);
-    const { profilePictureUrl, headerPictureUrl } = sessionUser;
+    const { profilePictureUrl, headerPictureUrl, username } = sessionUser;
 
     return (
         <div className='profileHeader'>
-            <img src={headerPictureUrl} alt='Header'></img>
-            <div className='profilePicture'>
-                <img src={profilePictureUrl} alt='Profile'></img>
-            </div>
-            <div>Artist Name</div>
+            <img src={headerPictureUrl} alt='Header' className='headerPicture'></img>
+            <img src={profilePictureUrl} alt='Profile' className='profilePicture'></img>
+            <div className='artistName'>{username}</div>
         </div>
     )
 }

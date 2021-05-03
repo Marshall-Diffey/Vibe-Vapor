@@ -1,0 +1,31 @@
+.profileHeader {
+    display: flex;
+    position: relative;
+}
+
+.headerPicture {
+    position: relative;
+    height: 260px;
+    width: 100%;
+}
+
+/* .profilePictureDiv {
+    display: flex;
+    position: absolute;
+    top: 30px;
+} */
+
+.profilePicture {
+    position: absolute;
+    top: 30px;
+    height: 200px;
+}
+
+.artistName {
+    display: flex;
+    position: absolute;
+    left: 20px;
+    top: 8px;
+    background: black;
+    color: white;
+}
