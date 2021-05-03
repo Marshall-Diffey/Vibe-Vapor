@@ -37,7 +37,6 @@ const validateSignup = [
 // Sign up
 router.post(
     '',
-    // may need to invoke singleMulterUpload twice instead of passing two arguments
     multipleMulterUpload('images'),
     validateSignup,
     asyncHandler(async (req, res) => {

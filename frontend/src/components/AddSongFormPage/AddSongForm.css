@@ -1,0 +1,21 @@
+.addSongForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleInput {
+    margin: 4px 8px;
+}
+
+.songFileInput {
+    margin: 4px 8px;
+}
+
+.coverArtInput {
+    margin: 4px 8px;
+}
+
+.addSongButton {
+    margin: 4px 8px;
+}

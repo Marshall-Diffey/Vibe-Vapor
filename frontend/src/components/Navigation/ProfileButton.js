@@ -46,6 +46,11 @@ function ProfileButton({ user }) {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/song-new'>
+              <button>Add Song</button>
+            </NavLink>
+          </li>
+          <li>
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>

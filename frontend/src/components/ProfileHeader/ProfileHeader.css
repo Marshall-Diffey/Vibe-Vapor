@@ -19,12 +19,13 @@
     position: absolute;
     top: 30px;
     height: 200px;
+    left: 15px;
 }
 
 .artistName {
     display: flex;
     position: absolute;
-    left: 20px;
+    left: 30px;
     top: 8px;
     background: black;
     color: white;
