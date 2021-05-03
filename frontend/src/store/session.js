@@ -49,13 +49,23 @@ export const signup = (user) => async (dispatch) => {
     formData.append("email", email);
     formData.append("password", password);
     if (profilePicture && headerPicture) {
+      formData.append("profilePicture", true);
+      formData.append("headerPicture", true);
       formData.append("images", profilePicture);
-      formData.append("images", headerPicture + 'header');
-    } else if (headerPicture) formData.append("images", headerPicture + 'header')
-    else if (profilePicture) formData.append("images", profilePicture);
+      formData.append("images", headerPicture);
+    } else if (profilePicture) {
+      formData.append("profilePicture", true);
+      formData.append("images", profilePicture);
+    } else if (headerPicture) {
+      formData.append("headerPicture", true);
+      formData.append("images", headerPicture)
+    }
 
     const response = await csrfFetch("/api/users", {
       method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
       body: formData
     });
     const data = await response.json();

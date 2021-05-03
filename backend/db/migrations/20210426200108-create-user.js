@@ -18,11 +18,11 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      profilePicture: {
-        type: Sequelize.BLOB
+      profilePictureUrl: {
+        type: Sequelize.STRING
       },
-      headerPicture: {
-        type: Sequelize.BLOB
+      headerPictureUrl: {
+        type: Sequelize.STRING
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ProfileHeader.css"
 
 export default function ProfileHeader() {
+    const sessionUser = useSelector((state) => state.session.user);
+    console.log(sessionUser.profilePictureUrl);
+    const { profilePictureUrl, headerPictureUrl } = sessionUser;
+
     return (
         <div className='profileHeader'>
-            <img src='' alt='Header'></img>
+            <img src={headerPictureUrl} alt='Header'></img>
             <div className='profilePicture'>
-                <img src='' alt='Profile'></img>
+                <img src={profilePictureUrl} alt='Profile'></img>
             </div>
             <div>Artist Name</div>
         </div>

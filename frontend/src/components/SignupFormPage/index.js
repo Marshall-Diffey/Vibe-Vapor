@@ -23,14 +23,14 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, profilePicture, headerPicture, password }))
-        .then(() => {
-          setEmail("");
-          setUsername("");
-          setProfilePicture(null);
-          setHeaderPicture(null);
-          setPassword("");
-          setConfirmPassword("");
-        })
+        // .then(() => {
+        //   setEmail("");
+        //   setUsername("");
+        //   setProfilePicture(null);
+        //   setHeaderPicture(null);
+        //   setPassword("");
+        //   setConfirmPassword("");
+        // })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);

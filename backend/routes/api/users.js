@@ -41,21 +41,19 @@ router.post(
     multipleMulterUpload('images'),
     validateSignup,
     asyncHandler(async (req, res) => {
-      const { email, password, username } = req.body;
-      console.log(req.file);
-      let headerPictureUrl;
-      let profilePictureUrl;
-      if (req.file.length) {
-        req.file.forEach(async (pic) => {
-          if (pic.slice(0, pic.length - 6) === 'header') {
-            headerPictureUrl = await singlePublicFileUpload(pic.slice(0, pic.length - 6));
-          }
-          else {
-            profilePictureUrl = await singlePublicFileUpload(pic);
-          }
-        })
+      const { email, password, username, profilePicture, headerPicture } = req.body;
+      let headerPictureUrl = null;
+      let profilePictureUrl = null;
+      if (req.files) {
+        if (profilePicture && headerPicture) {
+          profilePictureUrl = await singlePublicFileUpload(req.files[0])
+          headerPictureUrl = await singlePublicFileUpload(req.files[1]);
+        } else if (profilePicture) profilePictureUrl = await singlePublicFileUpload(req.files[0]);
+        else headerPictureUrl = await singlePublicFileUpload(req.files[0])
       }
-      const user = await User.signup({ email, username, password, headerPictureUrl, profilePictureUrl });
+      console.log(headerPictureUrl);
+      console.log(profilePictureUrl);
+      const user = await User.signup({ email, username, password, profilePictureUrl, headerPictureUrl });
       await setTokenCookie(res, user);
 
       return res.json({
